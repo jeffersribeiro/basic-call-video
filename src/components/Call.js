@@ -92,11 +92,10 @@ export default class Call extends Component {
       }?uid=${USER_ID}`
     )
       .then((res) => res)
-      .then((result) => result.json().url);
-    console.log(response);
+      .then((result) => result.json());
     let me = this;
     client.join(
-      null,
+      response.key,
       me.props.channel,
       USER_ID,
       function(uid) {
