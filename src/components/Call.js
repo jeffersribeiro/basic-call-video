@@ -85,7 +85,15 @@ export default class Call extends Component {
     );
   };
 
-  joinChannel = () => {
+  joinChannel = async () => {
+    let response = await fetch(
+      `http://localhost:8080/rtcToken?channelName=${
+        this.props.channel
+      }?uid=${USER_ID}`
+    )
+      .then((res) => res)
+      .then((result) => result.json().url);
+    console.log(response);
     let me = this;
     client.join(
       null,
